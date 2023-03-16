@@ -1,8 +1,8 @@
 from types import SimpleNamespace
 
 cfg = SimpleNamespace(
-    url = 'http://agro4sensors.athenarc.gr:8080/addUPI',
-    db_url = "mysql+pymysql://petamva:Pet%40mv%40134679-852@kubem.ceti.gr:30002/spa_a4p_platform",
+    url = '<server url with sensor values>',
+    db_url = "<db url>",
     farms = {
         'AthenaRC' : '753',
         'Chatzisavva' : '824',
@@ -88,8 +88,8 @@ cfg = SimpleNamespace(
     },
     params_login = {
         'function' : 'login',
-        'user' : 'a4p-spa-api-user',
-        'passwd' : '@4p-sp@-@pi-p@ass',
+        'user' : '<username>',
+        'passwd' : 'password',
         'version' : 1.2
     },
     start = (2022, 1, 20, 1, 0),
