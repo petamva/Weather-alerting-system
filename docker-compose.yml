@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+    db:
+        image: mysql
+        # container_name: mysql
+        volumes:
+            - mysqldbvolume:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: qw#rty!(*#
+            MYSQL_DATABASE: demo
+            MYSQL_USER: user
+            MYSQL_PASSWORD: user
+        ports:
+            - '3306:3306'
+        networks:
+            - code-network    
+    phpmyadmin:
+        depends_on:
+            - db
+        image: phpmyadmin
+        container_name: phpmyadmin 
+        restart: always
+        ports:
+            - '8091:80'
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: qw#rty!(*#
+        networks:
+            - code-network
+    app:
+        build: .
+        container_name: local-network-alerts
+        #ports:
+        #    - '5000:5000'
+        networks:
+            - code-network
+networks:
+    code-network:
+        driver: bridge
+    #wordpress_wpsite:
+    #    external: true
+
+volumes:
+    mysqldbvolume:
+        driver: local
+
